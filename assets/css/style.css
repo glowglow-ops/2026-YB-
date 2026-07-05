@@ -130,13 +130,13 @@ section{ position:relative; }
 .brand-bar{
   position:fixed; top:0; left:0; right:0; z-index:400;
   display:flex; align-items:center; justify-content:space-between;
-  padding:14px clamp(18px,5vw,32px);
+  padding:12px clamp(20px,5vw,40px);
   mix-blend-mode:difference;
 }
-.brand-bar img{ width:30px; height:30px; filter:invert(1); }
+.brand-bar img{ width:42px; height:42px; filter:invert(1); }
 .brand-bar span{
-  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.12em;
-  color:#fff;
+  font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.12em;
+  color:#fff; font-weight:500;
 }
 
 /* ==========================================================================
@@ -149,6 +149,7 @@ section{ position:relative; }
   align-items:flex-end;
   color:var(--on-dark);
   overflow:hidden;
+  padding-top:0;
 }
 .hero .hero-bg{
   position:absolute; inset:0;
