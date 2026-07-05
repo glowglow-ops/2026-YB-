@@ -3,9 +3,7 @@
 
   const CONFIG = window.SITE_CONFIG || {};
 
-  /* ---------------------------------------------------------------------
-   * Utilities
-   * ------------------------------------------------------------------- */
+  /* ===== Utilities ===== */
   function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
   function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
   function el(tag, cls, html) {
@@ -20,17 +18,13 @@
     return res.json();
   }
 
-  /* ---------------------------------------------------------------------
-   * Loader
-   * ------------------------------------------------------------------- */
+  /* ===== Loader ===== */
   window.addEventListener("load", () => {
     const loader = qs("#loader");
     if (loader) setTimeout(() => loader.classList.add("hide"), 350);
   });
 
-  /* ---------------------------------------------------------------------
-   * Scroll reveal
-   * ------------------------------------------------------------------- */
+  /* ===== Scroll reveal ===== */
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -46,15 +40,13 @@
     qsa(".reveal", container).forEach((node) => revealObserver.observe(node));
   }
 
-  /* ---------------------------------------------------------------------
-   * Works Archive — data render, tabs, lightbox
-   * ------------------------------------------------------------------- */
-  const RHYTHM = ["l", "m", "m", "s", "m", "l", "s", "m"]; // visual rhythm cycle (used for scenes/party)
+  /* ===== Works Archive — data render, lightbox ===== */
+  const RHYTHM = ["l", "m", "m", "s", "m", "l", "s", "m"];
 
   function workCardHTML(w) {
     const flag = w.needsReview
       ? '<span class="flag" title="확인 필요">확인필요</span>'
-      : (w.multiWork ? '<span class="flag" style="background:var(--sage)">' + (w.workCount || 2) + '점</span>' : "");
+      : (w.multiWork ? '<span class="flag" style="background:var(--sage);">' + (w.workCount || 2) + '점</span>' : "");
     return (
       '<div class="work-thumb">' +
         '<img src="' + w.thumb + '" alt="' + w.name + ', ' + w.title + '" loading="lazy">' +
@@ -73,17 +65,19 @@
     list.forEach((w, i) => {
       const card = el("div", "work-card reveal");
       card.innerHTML = workCardHTML(w);
-      card.addEventListener("click", () => openModal(list, i));
+      card.addEventListener("click", () => openModal(w, list));
       container.appendChild(card);
     });
     observeReveals(container);
   }
 
-  let modalState = { list: [], index: 0 };
+  // ===== UNIFIED WORKS LIST FOR MODAL NAVIGATION =====
+  let allWorks = [];  // Combined alumni + student list
+  let modalState = { works: [], item: null };
 
   function renderModal() {
-    const w = modalState.list[modalState.index];
-    if (!w) return;
+    if (!modalState.item) return;
+    const w = modalState.item;
     qs("#modalImg").src = w.image;
     qs("#modalImg").alt = w.name + ", " + w.title;
     qs("#modalCohort").textContent = w.cohort;
@@ -101,20 +95,30 @@
     }
   }
 
-  function openModal(list, index) {
-    modalState = { list, index };
+  function openModal(item, contextList) {
+    // contextList: the list clicked from (alumni or student)
+    // allWorks: the full combined list for navigation
+    modalState = { item, works: allWorks };
     renderModal();
     qs("#modalOverlay").classList.add("open");
     document.body.style.overflow = "hidden";
   }
+
   function closeModal() {
     qs("#modalOverlay").classList.remove("open");
     document.body.style.overflow = "";
   }
+
   function stepModal(dir) {
-    const len = modalState.list.length;
-    if (!len) return;
-    modalState.index = (modalState.index + dir + len) % len;
+    if (!modalState.item || !modalState.works.length) return;
+    
+    // Find current index in allWorks
+    const currentIndex = modalState.works.findIndex(w => w.id === modalState.item.id);
+    if (currentIndex === -1) return;
+    
+    // Calculate next index (with wraparound)
+    const nextIndex = (currentIndex + dir + modalState.works.length) % modalState.works.length;
+    modalState.item = modalState.works[nextIndex];
     renderModal();
   }
 
@@ -133,7 +137,7 @@
     });
   }
 
-async function initWorks() {
+  async function initWorks() {
     let data;
     try {
       data = await fetchJSON("assets/data/works.json");
@@ -141,8 +145,12 @@ async function initWorks() {
       console.error("작품 데이터를 불러오지 못했습니다.", err);
       return;
     }
+    
     const alumniList = data.alumni.slice().sort((a, b) => a.cohortNum - b.cohortNum);
     const studentList = data.student.slice().sort((a, b) => a.cohortNum - b.cohortNum);
+
+    // Create unified list: alumni + student
+    allWorks = [...alumniList, ...studentList];
 
     const alumniGrid = qs("#alumniGrid");
     const studentGrid = qs("#studentGrid");
@@ -152,9 +160,7 @@ async function initWorks() {
     initModal();
   }
 
-  /* ---------------------------------------------------------------------
-   * Awards
-   * ------------------------------------------------------------------- */
+  /* ===== Awards ===== */
   async function initAwards() {
     let list;
     try {
@@ -183,10 +189,7 @@ async function initWorks() {
     observeReveals(grid);
   }
 
-  /* ---------------------------------------------------------------------
-   * Folder auto-loading (GitHub Contents API) with manifest fallback
-   * Used for: Party & People / Exhibition Scenes extension
-   * ------------------------------------------------------------------- */
+  /* ===== Folder auto-loading (GitHub Contents API) with manifest fallback ===== */
   async function listFolderImages(folderPath, manifestPath) {
     const repo = (CONFIG.GITHUB_REPO || "").trim();
     if (repo) {
@@ -206,7 +209,6 @@ async function initWorks() {
         console.warn("GitHub API 로딩 실패, 매니페스트로 대체합니다.", err);
       }
     }
-    // Fallback: local manifest file (works fully offline / before repo configured)
     try {
       const names = await fetchJSON(manifestPath);
       return names.map((n) => folderPath + "/" + n);
@@ -242,8 +244,6 @@ async function initWorks() {
   }
 
   async function initScenesExtra() {
-    // Base 4 curated photos are already in the static HTML for a fixed editorial
-    // layout. Anything added to the folder beyond those four appears here.
     const container = qs("#sceneExtra");
     if (!container) return;
     const KNOWN = ["scene-01.jpg", "scene-02.jpg", "scene-03.jpg", "scene-04.jpg"];
@@ -263,23 +263,11 @@ async function initWorks() {
     observeReveals(container);
   }
 
-  /* ---------------------------------------------------------------------
-   * Init
-   * ------------------------------------------------------------------- */
-  document.addEventListener("DOMContentLoaded", () => {
-    observeReveals(document);
-
-    initWorks();
-    initAwards();
-    initParty();
-    initScenesExtra();
-  });
-/* Section Navigation */
+  /* ===== Section Navigation ===== */
   function initSectionNav() {
     const navLinks = qsa(".section-nav a[data-section]");
     const sections = qsa("section[data-section]");
     
-    // Click navigation
     navLinks.forEach(link => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -289,7 +277,6 @@ async function initWorks() {
       });
     });
     
-    // Scroll-based active state
     const navObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -304,14 +291,8 @@ async function initWorks() {
     sections.forEach(s => navObserver.observe(s));
   }
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Adjust body top padding for fixed header
-    const header = document.querySelector('.top-header');
-    if (header) {
-      const headerHeight = header.offsetHeight;
-      document.body.style.paddingTop = headerHeight + 'px';
-    }
-    
+  /* ===== Init ===== */
+  document.addEventListener("DOMContentLoaded", () => {
     observeReveals(document);
     initSectionNav();
     initWorks();
