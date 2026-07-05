@@ -158,7 +158,7 @@
       "image": "assets/img/works/alumni/alumni-11.jpg",
       "thumb": "assets/img/works/alumni/thumb/alumni-11.jpg",
       "multiWork": true,
-      "workCount": 3,
+      "workCount": 3
     },
     {
       "id": "alumni-12",
@@ -173,7 +173,7 @@
       "image": "assets/img/works/alumni/alumni-12.jpg",
       "thumb": "assets/img/works/alumni/thumb/alumni-12.jpg",
       "multiWork": true,
-      "workCount": 4,
+      "workCount": 4
     },
     {
       "id": "alumni-13",
@@ -201,7 +201,7 @@
       "image": "assets/img/works/alumni/alumni-14.jpg",
       "thumb": "assets/img/works/alumni/thumb/alumni-14.jpg",
       "multiWork": true,
-      "workCount": 2,
+      "workCount": 2
     },
     {
       "id": "alumni-15",
