@@ -9,14 +9,14 @@
 <link rel="icon" href="assets/img/misc/logo-blue.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Noto+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <div id="loader"><img class="mark" src="assets/img/misc/logo-blue.png" alt=""></div>
 
-<!-- ============================== FIXED HEADER WITH NAV ============================== -->
+<!-- ============================== FIXED HEADER — 한 줄 레이아웃 ============================== -->
 <header class="top-header">
   <div class="header-brand">
     <img src="assets/img/misc/logo-blue.png" alt="Whawoo">
@@ -33,7 +33,7 @@
   <div class="header-title">2026 연세화우 YB전</div>
 </header>
 
-<!-- ============================== HERO ============================== -->
+<!-- ============================== HERO — 원본 비율, 화면 가득 채우기 ============================== -->
 <section class="hero" data-section="hero">
   <div class="hero-bg" style="background-image:url('assets/img/hero/hero-main.jpg');"></div>
   <div class="hero-top">
@@ -97,8 +97,10 @@
       <div class="about-photos reveal">
         <figure><img src="assets/img/about/history-1.jpg" alt="화우회 과거 사진 1 - 야외 스케치"><figcaption>ARCHIVE — 야외 스케치</figcaption></figure>
         <figure><img src="assets/img/about/history-2.jpg" alt="화우회 과거 사진 2 - 단체 사진"><figcaption>ARCHIVE — 동문 모임</figcaption></figure>
-        <figure style="margin: 0; overflow: hidden; border-radius: 4px; grid-column: span 2;"><img src="assets/img/misc/catalog-1.jpg" alt="2026 동문미전 카탈로그" style="width: 100%; display: block;"></figure>
-        <figure style="margin: 0; overflow: hidden; border-radius: 4px; grid-column: span 2;"><img src="assets/img/misc/catalog-2.jpg" alt="2026 동문미전 카탈로그" style="width: 100%; display: block;"></figure>
+        <div class="catalog-images">
+          <figure><img src="assets/img/misc/catalog-1.jpg" alt="2026 동문미전 카탈로그"></figure>
+          <figure><img src="assets/img/misc/catalog-2.jpg" alt="2026 동문미전 카탈로그"></figure>
+        </div>
       </div>
     </div>
   </div>
@@ -113,10 +115,10 @@
       <p>57th 갤러리의 공간과 전시 현장, 그날의 공기를 담았습니다.</p>
     </div>
     <div class="scene-grid" id="sceneGrid">
-      <div class="scene-item reveal size-l"><img src="assets/img/scenes/scene-01.jpg" loading="lazy" alt="갤러리 외부 전경"><span class="scene-tag">외부 전경</span></div>
-      <div class="scene-item reveal size-m"><img src="assets/img/scenes/scene-02.jpg" loading="lazy" alt="전시장 좌측 전경"><span class="scene-tag">좌측 전경</span></div>
-      <div class="scene-item reveal size-s"><img src="assets/img/scenes/scene-04.jpg" loading="lazy" alt="전시장 우측 전경"><span class="scene-tag">우측 전경</span></div>
-      <div class="scene-item reveal size-m"><img src="assets/img/scenes/scene-03.jpg" loading="lazy" alt="전시장 좌측 전경 2"><span class="scene-tag">전시 전경</span></div>
+      <div class="scene-item reveal"><img src="assets/img/scenes/scene-01.jpg" loading="lazy" alt="갤러리 외부 전경"><span class="scene-tag">외부 전경</span></div>
+      <div class="scene-item reveal"><img src="assets/img/scenes/scene-02.jpg" loading="lazy" alt="전시장 좌측 전경"><span class="scene-tag">좌측 전경</span></div>
+      <div class="scene-item reveal"><img src="assets/img/scenes/scene-04.jpg" loading="lazy" alt="전시장 우측 전경"><span class="scene-tag">우측 전경</span></div>
+      <div class="scene-item reveal"><img src="assets/img/scenes/scene-03.jpg" loading="lazy" alt="전시장 좌측 전경 2"><span class="scene-tag">전시 전경</span></div>
       <div id="sceneExtra" style="display:contents;"></div>
     </div>
   </div>
