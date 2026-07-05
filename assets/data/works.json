@@ -159,8 +159,6 @@
       "thumb": "assets/img/works/alumni/thumb/alumni-11.jpg",
       "multiWork": true,
       "workCount": 3,
-      "needsReview": true,
-      "reviewNote": "캡션/명단 기준 3점(올려보다·비춰보다·내려보다) 출품. 제공된 이미지는 3점이 함께 걸린 전시 전경 사진 1장뿐이라 개별 작품 단독 컷이 필요한지 확인 부탁드립니다."
     },
     {
       "id": "alumni-12",
@@ -176,8 +174,6 @@
       "thumb": "assets/img/works/alumni/thumb/alumni-12.jpg",
       "multiWork": true,
       "workCount": 4,
-      "needsReview": true,
-      "reviewNote": "캡션/명단 기준 4점(이화동 그 골목 1~4) 출품. 제공된 이미지는 4점이 함께 걸린 전시 전경 사진 1장뿐이라 개별 작품 단독 컷이 필요한지 확인 부탁드립니다."
     },
     {
       "id": "alumni-13",
@@ -206,8 +202,6 @@
       "thumb": "assets/img/works/alumni/thumb/alumni-14.jpg",
       "multiWork": true,
       "workCount": 2,
-      "needsReview": true,
-      "reviewNote": "2점 출품이며, 제공 이미지 1장에 2점이 함께 액자로 걸려 있어 그대로 사용했습니다. 개별 분리가 필요하면 말씀해주세요."
     },
     {
       "id": "alumni-15",
