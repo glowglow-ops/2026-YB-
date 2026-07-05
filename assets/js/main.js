@@ -304,7 +304,14 @@ async function initWorks() {
     sections.forEach(s => navObserver.observe(s));
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+    // Adjust body top padding for fixed header
+    const header = document.querySelector('.top-header');
+    if (header) {
+      const headerHeight = header.offsetHeight;
+      document.body.style.paddingTop = headerHeight + 'px';
+    }
+    
     observeReveals(document);
     initSectionNav();
     initWorks();
