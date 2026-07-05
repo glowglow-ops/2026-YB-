@@ -288,4 +288,42 @@
     initParty();
     initScenesExtra();
   });
+/* Section Navigation */
+  function initSectionNav() {
+    const navLinks = qsa(".section-nav a[data-section]");
+    const sections = qsa("section[data-section]");
+    
+    // Click navigation
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const sectionId = link.dataset.section;
+        const section = qs('section[data-section="' + sectionId + '"]');
+        if (section) section.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+    
+    // Scroll-based active state
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("data-section");
+            navLinks.forEach(l => l.classList.toggle("active", l.dataset.section === id));
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    sections.forEach(s => navObserver.observe(s));
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    observeReveals(document);
+    initSectionNav();
+    initWorks();
+    initAwards();
+    initParty();
+    initScenesExtra();
+  });
 })();
