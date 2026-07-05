@@ -407,14 +407,13 @@ section{ position:relative; }
 .scene-grid{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
-  gap:18px;
-  aspect-ratio: 2/1;
+  gap:20px;
 }
 .scene-item{
   position:relative;
   overflow:hidden;
   border-radius:var(--radius-m);
-  aspect-ratio: 1;
+  aspect-ratio: 1.2;
 }
 .scene-item img{
   width:100%;
@@ -439,7 +438,7 @@ section{ position:relative; }
 @media (max-width:640px){
   .scene-grid{
     grid-template-columns: 1fr;
-    aspect-ratio: unset;
+    gap: 16px;
   }
   .scene-item{ aspect-ratio: 4/3; }
 }
