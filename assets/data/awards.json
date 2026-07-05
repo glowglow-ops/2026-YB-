@@ -5,7 +5,7 @@
     "titleKo": "동문 최우수작",
     "cohort": "32기",
     "name": "진연정",
-    "workTitle": "귤과 황동 접시 / 피클단지와 호박",
+    "workTitle": "이화동 그 골목 1~4",
     "image": "assets/img/awards/award-alumni.jpg",
     "note": null
   },
@@ -22,11 +22,11 @@
   {
     "id": "award-dressed",
     "titleEn": "Best Dressed Person",
-    "titleKo": "베스트 드레서",
+    "titleKo": "Best Dressed Person",
     "cohort": "58기",
     "name": "김민성",
     "workTitle": null,
     "image": "assets/img/awards/award-dressed.jpg",
-    "note": null
+    "note": 화우 YB미전 파티 공식 드레스코드 : Blue
   }
 ]
