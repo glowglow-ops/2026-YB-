@@ -1,0 +1,32 @@
+[
+  {
+    "id": "award-alumni",
+    "titleEn": "Painter of the Year",
+    "titleKo": "동문 최우수작",
+    "cohort": "32기",
+    "name": "진연정",
+    "workTitle": "귤과 황동 접시 / 피클단지와 호박",
+    "image": "assets/img/awards/award-alumni.jpg",
+    "note": null
+  },
+  {
+    "id": "award-student",
+    "titleEn": "Painter of the Year",
+    "titleKo": "재학생 최우수작",
+    "cohort": "59기",
+    "name": "박채연",
+    "workTitle": "초점",
+    "image": "assets/img/awards/award-student.jpg",
+    "note": "사진 속 인물은 수상자 본인이 아닌 대리수령 장면입니다."
+  },
+  {
+    "id": "award-dressed",
+    "titleEn": "Best Dressed Person",
+    "titleKo": "베스트 드레서",
+    "cohort": "58기",
+    "name": "김민성",
+    "workTitle": null,
+    "image": "assets/img/awards/award-dressed.jpg",
+    "note": null
+  }
+]
