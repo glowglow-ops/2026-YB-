@@ -602,3 +602,28 @@ section{ position:relative; }
   .party-grid{ columns:2 150px; }
   .info-row{ grid-template-columns:88px 1fr; }
 }
+
+/* ==========================================================================
+   Section Navigation Bar
+   ========================================================================== */
+.section-nav{
+  position:fixed; top:60px; left:0; right:0; z-index:300;
+  display:flex; gap:0; overflow-x:auto; overflow-y:hidden;
+  background:var(--paper);
+  border-bottom:1px solid var(--paper-line);
+  padding:0 clamp(20px,5vw,64px);
+}
+.section-nav a{
+  flex-shrink:0;
+  padding:12px 18px;
+  font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em;
+  text-decoration:none; color:var(--ink-faint);
+  text-transform:uppercase;
+  border-bottom:2px solid transparent;
+  transition:all .25s ease;
+  white-space:nowrap;
+}
+.section-nav a:hover{ color:var(--ink); }
+.section-nav a.active{
+  color:var(--ink); border-bottom-color:var(--blue);
+}
