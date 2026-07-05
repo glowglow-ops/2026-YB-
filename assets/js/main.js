@@ -133,7 +133,7 @@
     });
   }
 
-  async function initWorks() {
+async function initWorks() {
     let data;
     try {
       data = await fetchJSON("assets/data/works.json");
@@ -144,24 +144,10 @@
     const alumniList = data.alumni.slice().sort((a, b) => a.cohortNum - b.cohortNum);
     const studentList = data.student.slice().sort((a, b) => a.cohortNum - b.cohortNum);
 
-    qs("#tabAlumniCount").textContent = alumniList.length;
-    qs("#tabStudentCount").textContent = studentList.length;
-
     const alumniGrid = qs("#alumniGrid");
     const studentGrid = qs("#studentGrid");
     renderWorksGrid(alumniList, alumniGrid);
     renderWorksGrid(studentList, studentGrid);
-
-    const tabs = qsa(".works-tab");
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        tabs.forEach((t) => t.classList.remove("active"));
-        tab.classList.add("active");
-        const target = tab.dataset.target;
-        alumniGrid.style.display = target === "alumni" ? "" : "none";
-        studentGrid.style.display = target === "student" ? "" : "none";
-      });
-    });
 
     initModal();
   }
