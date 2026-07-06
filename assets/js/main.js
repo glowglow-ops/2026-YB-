@@ -237,31 +237,32 @@
     observeReveals(container);
   }
 
-async function initParty() {
-  const container = qs("#partyGrid");
-  const urls = await listFolderImages(CONFIG.PARTY_FOLDER || "assets/img/party", "assets/data/party-manifest.json");
-  renderPhotoMasonry(urls, container, "사진을 불러오는 중이거나 아직 없습니다.");
-}
+  async function initParty() {
+    const container = qs("#partyGrid");
+    const urls = await listFolderImages(CONFIG.PARTY_FOLDER || "assets/img/party", "assets/data/party-manifest.json");
+    renderPhotoMasonry(urls, container, "사진을 불러오는 중이거나 아직 없습니다.");
+  }
 
-async function initScenesExtra() {
-  const container = qs("#sceneExtra");
-  if (!container) return;
-  const KNOWN = ["scene-01.jpg", "scene-02.jpg", "scene-03.jpg", "scene-04.jpg"];
-  const urls = await listFolderImages(CONFIG.SCENES_FOLDER || "assets/img/scenes", "assets/data/scenes-manifest.json");
-  const extra = urls.filter((u) => !KNOWN.some((k) => u.endsWith(k)));
-  if (!extra.length) return;
-  extra.forEach((url, i) => {
-    const size = RHYTHM[i % RHYTHM.length];
-    const item = el("div", "scene-item reveal size-" + size);
-    const img = el("img");
-    img.src = url;
-    img.loading = "lazy";
-    img.alt = "전시 현장 추가 사진";
-    item.appendChild(img);
-    container.appendChild(item);
-  });
-  observeReveals(container);
-}
+  async function initScenesExtra() {
+    const container = qs("#sceneExtra");
+    if (!container) return;
+    const KNOWN = ["scene-01.jpg", "scene-02.jpg", "scene-03.jpg", "scene-04.jpg"];
+    const urls = await listFolderImages(CONFIG.SCENES_FOLDER || "assets/img/scenes", "assets/data/scenes-manifest.json");
+    const extra = urls.filter((u) => !KNOWN.some((k) => u.endsWith(k)));
+    if (!extra.length) return;
+    extra.forEach((url, i) => {
+      const size = RHYTHM[i % RHYTHM.length];
+      const item = el("div", "scene-item reveal size-" + size);
+      const img = el("img");
+      img.src = url;
+      img.loading = "lazy";
+      img.alt = "전시 현장 추가 사진";
+      item.appendChild(img);
+      container.appendChild(item);
+    });
+    observeReveals(container);
+  }
+
   /* ===== Section Navigation ===== */
   function initSectionNav() {
     const navLinks = qsa(".section-nav a[data-section]");
