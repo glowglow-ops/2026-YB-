@@ -691,47 +691,6 @@ section{ position:relative; }
   max-width:520px;
 }
 
-.party-more-wrapper{
-  position:relative;
-  margin-bottom:14px;
-  break-inside:avoid;
-}
-
-.party-more-overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, transparent 0%, rgba(15,14,10,0.7) 60%, rgba(15,14,10,0.95) 100%);
-  border-radius:var(--radius-s);
-  z-index:1;
-  pointer-events:none;
-}
-
-.party-more-button{
-  position:absolute;
-  top:50%; left:50%;
-  transform:translate(-50%, -50%);
-  z-index:2;
-  padding:16px 32px;
-  background:rgba(217,122,82,0.9);
-  color:var(--on-dark);
-  border:none;
-  border-radius:var(--radius-m);
-  font-family:'Noto Sans KR',sans-serif;
-  font-size:14px;
-  font-weight:600;
-  letter-spacing:.05em;
-  cursor:pointer;
-  transition:all .3s ease;
-  backdrop-filter:blur(8px);
-}
-
-.party-more-button:hover{
-  background:rgba(217,122,82,1);
-  transform:translate(-50%, -50%) scale(1.05);
-}
-
-.party-more-button:active{
-  transform:translate(-50%, -50%) scale(0.98);
-}
 /* ==========================================================================
    CLOSING / CREDITS
    ========================================================================== */
