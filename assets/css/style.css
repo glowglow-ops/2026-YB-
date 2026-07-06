@@ -122,7 +122,7 @@ section{ position:relative; }
   transition:opacity .7s var(--ease), visibility .7s var(--ease);
 }
 #loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-#loader .mark{ width:46px; height:46px; opacity:.9; animation:pulse 1.6s ease-in-out infinite; }
+#loader .mark{ width:120px; height:120px; opacity:.9; animation:pulse 2s ease-in-out infinite; }
 @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.55;} 50%{ transform:scale(1.08); opacity:1;} }
 
 /* ==========================================================================
@@ -142,7 +142,7 @@ section{ position:relative; }
   display:flex; align-items:center; flex-shrink:0;
 }
 .header-brand img{
-  width:36px; height:36px;
+  width:48px; height:48px;
 }
 
 .section-nav{
@@ -180,7 +180,7 @@ section{ position:relative; }
 
 .header-title{
   font-family:'Noto Serif KR',serif;
-  font-size:13px;
+  font-size:18px;
   letter-spacing:.04em;
   font-weight:600;
   color:var(--ink);
