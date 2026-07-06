@@ -238,40 +238,10 @@
   }
 
 async function initParty() {
-    const container = qs("#partyGrid");
-    const urls = await listFolderImages(CONFIG.PARTY_FOLDER || "assets/img/party", "assets/data/party-manifest.json");
-    
-    if (!urls.length) {
-      container.innerHTML = '<div class="party-empty">사진을 불러오는 중이거나 아직 없습니다.</div>';
-      return;
-    }
-
-    // 처음 20장만 표시
-    const INITIAL_LOAD = 20;
-    const initialUrls = urls.slice(0, INITIAL_LOAD);
-    const remainingUrls = urls.slice(INITIAL_LOAD);
-
-    renderPhotoMasonry(initialUrls, container, "사진을 불러오는 중이거나 아직 없습니다.");
-
-    // 더 있으면 "더보기" 버튼 추가
-    if (remainingUrls.length > 0) {
-      const moreButton = el("div", "party-more-wrapper");
-      moreButton.innerHTML = `
-        <div class="party-more-overlay"></div>
-        <button class="party-more-button">+더보기 (${remainingUrls.length}개)</button>
-      `;
-      
-      moreButton.querySelector(".party-more-button").addEventListener("click", () => {
-        moreButton.remove();
-        renderPhotoMasonry(remainingUrls, container, "");
-        observeReveals(container);
-      });
-
-      container.appendChild(moreButton);
-    }
-  }
-
-  async function initScenesExtra() {
+  const container = qs("#partyGrid");
+  const urls = await listFolderImages(CONFIG.PARTY_FOLDER || "assets/img/party", "assets/data/party-manifest.json");
+  renderPhotoMasonry(urls, container, "사진을 불러오는 중이거나 아직 없습니다.");
+}
     const container = qs("#sceneExtra");
     if (!container) return;
     const KNOWN = ["scene-01.jpg", "scene-02.jpg", "scene-03.jpg", "scene-04.jpg"];
