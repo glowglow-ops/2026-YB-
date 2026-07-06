@@ -142,7 +142,7 @@ section{ position:relative; }
   display:flex; align-items:center; flex-shrink:0;
 }
 .header-brand img{
-  width:28px; height:28px;
+  width:36px; height:36px;
 }
 
 .section-nav{
@@ -233,7 +233,7 @@ section{ position:relative; }
   position:absolute; top:clamp(20px,4vw,40px); left:clamp(20px,5vw,64px);
   display:flex; align-items:center; gap:12px;
 }
-.hero-top img{ width:32px; height:32px; }
+.hero-top img{ width:128px; height:128px; }
 .hero-top span{
   font-family:'IBM Plex Mono',monospace;
   font-size:10.5px;
