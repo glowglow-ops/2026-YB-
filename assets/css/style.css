@@ -122,7 +122,7 @@ section{ position:relative; }
   transition:opacity .7s var(--ease), visibility .7s var(--ease);
 }
 #loader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-#loader .mark{ width:120px; height:120px; opacity:.9; animation:pulse 2s ease-in-out infinite; }
+#loader .mark{ width:256px; height:256px; opacity:.9; animation:pulse 2s ease-in-out infinite; }
 @keyframes pulse{ 0%,100%{ transform:scale(1); opacity:.55;} 50%{ transform:scale(1.08); opacity:1;} }
 
 /* ==========================================================================
