@@ -16,7 +16,7 @@
  * ------------------------------------------------------------
  */
 window.SITE_CONFIG = {
-  GITHUB_REPO: "",           // 예: "yourname/whawoo-2026-archive"
+  GITHUB_REPO: "glowglow-ops/2026-YB-",           // 예: "yourname/whawoo-2026-archive"
   GITHUB_BRANCH: "main",     // 기본 브랜치명 (main 또는 master)
   PARTY_FOLDER: "assets/img/party",
   SCENES_FOLDER: "assets/img/scenes",
